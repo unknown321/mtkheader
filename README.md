@@ -16,7 +16,13 @@ Print header info by providing path to header file without any flags
     	mtk header
 ```
 
-Example:
+### Build
+
+```shell
+make
+```
+
+### Example:
 
 ```shell
 $ ./mtkheader-linux-amd64 test/initrd_header
