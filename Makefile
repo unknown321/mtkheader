@@ -8,22 +8,20 @@ ifeq ($(GOARCH),x86_64)
 	override GOARCH=amd64
 endif
 
-build:
+$(NAME):
 	CGO_ENABLED=0 GOOS=$(GOOS) GOARCH=$(GOARCH) go build -a \
 		-ldflags "-w -s" \
 		-trimpath \
 		-o $(NAME)
 
-build-arm: GOARCH=arm
-build-arm: GOARM=5
-build-arm: build
+build: $(NAME)
 
 test:
 	go test -v ./...
 
 all: test
 	$(MAKE) build
-	$(MAKE) build-arm
+	$(MAKE) GOARCH=arm GOARM=5 build
 
 clean:
 	rm -rfv $(PRODUCT)-*
