@@ -26,5 +26,9 @@ all: test
 clean:
 	rm -rfv $(PRODUCT)-*
 
+release:
+	$(MAKE) build
+	$(MAKE) GOARCH=arm GOARM=5 GOOS=linux build
+
 .PHONY: test
 .DEFAULT_GOAL := all
